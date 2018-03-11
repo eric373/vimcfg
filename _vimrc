@@ -7,7 +7,7 @@ call pathogen#infect()
 "*
 "**************************************************
 " set where to save views
-set viewdir=H:/vimfiles/view
+set viewdir=C:\Users\Eric\vimfiles\view
 
 " autosave and autoload all views
 autocmd BufWinLeave *.* mkview
@@ -98,15 +98,9 @@ set wildignore=*.dll,*.o,*.exe " ignore these files when searching or auto-compl
 set noautochdir     " don't automatically change to directory of current file
 
 " various commands for quick NERDTree navigation
-command! Docs NERDTree C:/Users/eco/Documents/
-command! Desktop NERDTree C:/Users/eco/Desktop/
-command! Src NERDTree C:/Users/eco/Documents/src
-command! Filters NERDTree C:/Users/eco/Documents/src/filters
-command! Fmc6 NERDTree Y:/dofasco/Imp/Appl/Lhtop_fmc6/src
-command! Fmc5 NERDTree S:/dofasco/Imp/Appl/Dofasco_fmc
-command! Logs NERDTree C:/Users/eco/Documents/logs
-command! Sql NERDTree C:/Users/eco/Documents/src/sql
-command! Dbg NERDTree C:/Users/eco/Documents/src/glx_dbg/
+command! Docs NERDTree C:/Users/Eric/Documents/
+command! Desktop NERDTree C:/Users/Eric/Desktop/
+command! Src NERDTree D:/src
 
 "**************************************************
 "*
@@ -210,17 +204,20 @@ map ã "*y
 map ö "*p
 cmap ö <C-r>*
 
-" Scroll 8 lines at a time
+" Scroll 8 lines at a time <A-j>, <A-k>
 map ê 25jzz " <A-j>
 map ë 25kzz " <A-k>
 
-" execute macros
+" execute macros <A-q>, <A-w>
 map ñ @a " <A-q>
 map ÷ @b " <A-w>
 
-" shift a line one indent left or right
+" shift a line one indent left or right <A-<> <A->>
 map ¬ <S-v>< " <A-<>
 map ® <S-v>> " <A->>
 
-" search highlighted
+" search highlighted <A-e>
 map å <A-c>/<A-v><CR>
+
+" recursive search in this folder
+vmap ä <A-c>:vimgrep //gj .\* <Left><Left><Left><Left><Left><Left><Left><Left><A-v><CR>:copen<CR>`20+
