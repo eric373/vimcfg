@@ -98,9 +98,15 @@ set wildignore=*.dll,*.o,*.exe " ignore these files when searching or auto-compl
 set noautochdir     " don't automatically change to directory of current file
 
 " various commands for quick NERDTree navigation
-command! Docs NERDTree C:/Users/Eric/Documents/
-command! Desktop NERDTree C:/Users/Eric/Desktop/
+command! Docs NERDTree C:/Users/eco/Documents/
+command! Desktop NERDTree C:/Users/eco/Desktop/
 command! Src NERDTree D:/src
+command! Filters NERDTree C:/Users/eco/Documents/src/filters
+command! Fmc6 NERDTree Y:/dofasco/Imp/Appl/Lhtop_fmc6/src
+command! Fmc5 NERDTree S:/dofasco/Imp/Appl/Dofasco_fmc
+command! Logs NERDTree C:/Users/eco/Documents/logs
+command! Sql NERDTree C:/Users/eco/Documents/src/sql
+command! Dbg NERDTree C:/Users/eco/Documents/src/glx_dbg/
 
 "**************************************************
 "*
@@ -220,4 +226,4 @@ map ® <S-v>> " <A->>
 map å <A-c>/<A-v><CR>
 
 " recursive search in this folder
-vmap ä <A-c>:vimgrep //gj .\* <Left><Left><Left><Left><Left><Left><Left><Left><A-v><CR>:copen<CR>`20+
+vmap ä <A-c>:vimgrep //gj ./**/* <Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><A-v><CR>:copen<CR>`20+
