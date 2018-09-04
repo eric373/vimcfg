@@ -1,3 +1,6 @@
+" map leader key to space
+let mapleader = " "
+
 " call pathogen to set the path variable correctly for plugins
 call pathogen#infect()
 
@@ -98,15 +101,10 @@ set wildignore=*.dll,*.o,*.exe " ignore these files when searching or auto-compl
 set noautochdir     " don't automatically change to directory of current file
 
 " various commands for quick NERDTree navigation
-command! Docs NERDTree C:/Users/eco/Documents/
-command! Desktop NERDTree C:/Users/eco/Desktop/
 command! Src NERDTree D:/src
-command! Filters NERDTree C:/Users/eco/Documents/src/filters
-command! Fmc6 NERDTree Y:/dofasco/Imp/Appl/Lhtop_fmc6/src
-command! Fmc5 NERDTree S:/dofasco/Imp/Appl/Dofasco_fmc
-command! Logs NERDTree C:/Users/eco/Documents/logs
-command! Sql NERDTree C:/Users/eco/Documents/src/sql
-command! Dbg NERDTree C:/Users/eco/Documents/src/glx_dbg/
+command! Dropbox NERDTree D:/Dropbox/
+command! Accounts e D:\Dropbox\notes\accounts.txt
+command! Recipes e D:\Dropbox\notes\recipes.txt
 
 "**************************************************
 "*
@@ -123,13 +121,13 @@ call arpeggio#map('x', '', 0, 'ji', '<Esc>')
 call arpeggio#map('n', '', 0, 'ji', '<Esc>')
 
 " Save mappings
-call arpeggio#map('i', '', 0, 'kl', ':w<CR>')
-call arpeggio#map('c', '', 0, 'kl', ':w<CR>')
-call arpeggio#map('o', '', 0, 'kl', ':w<CR>')
-call arpeggio#map('v', '', 0, 'kl', ':w<CR>')
-call arpeggio#map('s', '', 0, 'kl', ':w<CR>')
-call arpeggio#map('x', '', 0, 'kl', ':w<CR>')
-call arpeggio#map('n', '', 0, 'kl', ':w<CR>')
+call arpeggio#map('i', '', 0, 'kl', ':w<CR>:mkview<CR>')
+call arpeggio#map('c', '', 0, 'kl', ':w<CR>:mkview<CR>')
+call arpeggio#map('o', '', 0, 'kl', ':w<CR>:mkview<CR>')
+call arpeggio#map('v', '', 0, 'kl', ':w<CR>:mkview<CR>')
+call arpeggio#map('s', '', 0, 'kl', ':w<CR>:mkview<CR>')
+call arpeggio#map('x', '', 0, 'kl', ':w<CR>:mkview<CR>')
+call arpeggio#map('n', '', 0, 'kl', ':w<CR>:mkview<CR>')
 
 " Page up and page down mappings
 call arpeggio#map('n', '', 0, 'sd', '<C-f>')
@@ -152,8 +150,8 @@ call arpeggio#map('n', '', 0, 'xc', ':bp<CR>')
 call arpeggio#map('n', '', 0, '.,', ':bn<CR>')
 
 " visual mode selecting mappings
-call arpeggio#map('n', '', 0, 'wr', '<C-v>')
-call arpeggio#map('n', '', 0, 'ou', '<S-v>')
+call arpeggio#map('n', '', 0, 'wf', '<C-v>')
+call arpeggio#map('n', '', 0, 'jo', '<S-v>')
 
 " toggle fold
 call arpeggio#map('n', '', 0, 'io', 'za' )
@@ -170,6 +168,9 @@ map ` <C-w>
 "* Function key mappings
 "*
 "**************************************************
+" open quickfix list
+map <F1> :copen<CR>
+
 " Copy all text in the current buffer
 map <F2> :e ++ff=dos<CR>:w<CR>:e ++ff=unix<CR>:set list<CR>gg"*yG:%s/<C-v><C-m>//g<CR>:set nolist<CR>:w<CR>
 
@@ -193,7 +194,7 @@ map <F9> :NERDTreeToggle<CR>
 map <F10> :e ~/_vimrc<CR>
 
 "Open the notes file
-map <F11> :e C:/Users/eco/Documents/notes/daily\ log.txt<CR>:e C:/Users/eco/Documents/notes/notes.txt<CR><C-w>v:bn<CR>Gzz
+map <F11> :e D:/Dropbox/notes/todo.txt<CR>
 
 "Save all and close all
 map <F12> :wa<CR>:qa<CR>
@@ -226,4 +227,10 @@ map ® <S-v>> " <A->>
 map å <A-c>/<A-v><CR>
 
 " recursive search in this folder
-vmap ä <A-c>:vimgrep //gj ./**/* <Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><A-v><CR>:copen<CR>`20+
+map ä :vimgrep //gj ./**/* <Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+
+" display all marks <A-f>
+map æ :marks<CR>
+
+" map easymotion to use a single leader
+map <Leader> <Plug>(easymotion-prefix)
