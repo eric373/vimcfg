@@ -172,7 +172,8 @@ map ` <C-w>
 map <F1> :copen<CR>
 
 " Copy all text in the current buffer
-map <F2> :e ++ff=dos<CR>:w<CR>:e ++ff=unix<CR>:set list<CR>gg"*yG:%s/<C-v><C-m>//g<CR>:set nolist<CR>:w<CR>
+" map <F2> :e ++ff=dos<CR>:w<CR>:e ++ff=unix<CR>:set list<CR>gg"*yG:%s/<C-v><C-m>//g<CR>:set nolist<CR>:w<CR>
+map <F2> :e ++ff=dos<CR>:w<CR>:set list<CR>gg"*yG:set nolist<CR>:w<CR>
 
 " Paste and replace text to the current buffer
 map <F3> gg<S-v>Gx"*pgg
