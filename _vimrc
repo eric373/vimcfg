@@ -101,60 +101,91 @@ set wildignore=*.dll,*.o,*.exe " ignore these files when searching or auto-compl
 set noautochdir     " don't automatically change to directory of current file
 
 " various commands for quick NERDTree navigation
-command! Src NERDTree D:/src
-command! Dropbox NERDTree D:/Dropbox/
+command! Src NERDTree D:\src
+command! Dropbox NERDTree D:\Dropbox\
 command! Accounts e D:\Dropbox\notes\accounts.txt
 command! Recipes e D:\Dropbox\notes\recipes.txt
+command! Docs NEDTRee C:\Users\Eric\Documents
 
 "**************************************************
 "*
 "* Arpeggio mappings
 "*
 "**************************************************
-" Escape mappings
-call arpeggio#map('i', '', 0, 'ji', '<Esc>')
-call arpeggio#map('c', '', 0, 'ji', '<C-c>')
-call arpeggio#map('o', '', 0, 'ji', '<Esc>')
-call arpeggio#map('v', '', 0, 'ji', '<Esc>')
-call arpeggio#map('s', '', 0, 'ji', '<Esc>')
-call arpeggio#map('x', '', 0, 'ji', '<Esc>')
-call arpeggio#map('n', '', 0, 'ji', '<Esc>')
+" set timeout length in milliseconds
+let g:arpeggio_timeoutlen=20
 
-" Save mappings
-call arpeggio#map('i', '', 0, 'kl', ':w<CR>:mkview<CR>')
-call arpeggio#map('c', '', 0, 'kl', ':w<CR>:mkview<CR>')
-call arpeggio#map('o', '', 0, 'kl', ':w<CR>:mkview<CR>')
-call arpeggio#map('v', '', 0, 'kl', ':w<CR>:mkview<CR>')
-call arpeggio#map('s', '', 0, 'kl', ':w<CR>:mkview<CR>')
-call arpeggio#map('x', '', 0, 'kl', ':w<CR>:mkview<CR>')
-call arpeggio#map('n', '', 0, 'kl', ':w<CR>:mkview<CR>')
+" unmap all function for arpeggio
+function Unmapall()
+    :call arpeggio#unmap('i', '', 'ji')
+    :call arpeggio#unmap('c', '', 'ji')
+    :call arpeggio#unmap('o', '', 'ji')
+    :call arpeggio#unmap('v', '', 'ji')
+    :call arpeggio#unmap('n', '', 'ji')
+    :call arpeggio#unmap('i', '', 'kl')
+    :call arpeggio#unmap('c', '', 'kl')
+    :call arpeggio#unmap('o', '', 'kl')
+    :call arpeggio#unmap('v', '', 'kl')
+    :call arpeggio#unmap('n', '', 'kl')
+    :call arpeggio#unmap('n', '', 'sd')
+    :call arpeggio#unmap('v', '', 'sd')
+    :call arpeggio#unmap('n', '', 'we')
+    :call arpeggio#unmap('v', '', 'we')
+    :call arpeggio#unmap('n', '', 'ef')
+    :call arpeggio#unmap('v', '', 'ef')
+    :call arpeggio#unmap('n', '', 'fj')
+    :call arpeggio#unmap('n', '', 'xc')
+    :call arpeggio#unmap('n', '', '.,')
+    :call arpeggio#unmap('n', '', 'wf')
+    :call arpeggio#unmap('n', '', 'jo')
+    :call arpeggio#unmap('n', '', 'oi')
+endfunction
 
-" Page up and page down mappings
-call arpeggio#map('n', '', 0, 'sd', '<C-f>')
-call arpeggio#map('v', '', 0, 'sd', '<C-f>')
-call arpeggio#map('n', '', 0, 'we', '<C-b>')
-call arpeggio#map('v', '', 0, 'we', '<C-b>')
+" map all function for arpeggio
+function Mapall()
+    " Escape mappings
+    :call arpeggio#map('i', '', 0, 'ji', '<Esc>')
+    :call arpeggio#map('c', '', 0, 'ji', '<C-c>')
+    :call arpeggio#map('o', '', 0, 'ji', '<Esc>')
+    :call arpeggio#map('v', '', 0, 'ji', '<Esc>')
+    :call arpeggio#map('s', '', 0, 'ji', '<Esc>')
+    :call arpeggio#map('x', '', 0, 'ji', '<Esc>')
+    :call arpeggio#map('n', '', 0, 'ji', '<Esc>')
 
-" Mappings for : to take the load of the pinky
-call arpeggio#map('n', '', 0, 'ef', ':')
-call arpeggio#map('v', '', 0, 'ef', ':')
+    " Save mappings
+    :call arpeggio#map('i', '', 0, 'kl', ':w!<CR>:mkview<CR>')
+    :call arpeggio#map('c', '', 0, 'kl', ':w!<CR>:mkview<CR>')
+    :call arpeggio#map('o', '', 0, 'kl', ':w!<CR>:mkview<CR>')
+    :call arpeggio#map('v', '', 0, 'kl', ':w!<CR>:mkview<CR>')
+    :call arpeggio#map('s', '', 0, 'kl', ':w!<CR>:mkview<CR>')
+    :call arpeggio#map('x', '', 0, 'kl', ':w!<CR>:mkview<CR>')
+    :call arpeggio#map('n', '', 0, 'kl', ':w!<CR>:mkview<CR>')
 
-" testing feature
-call arpeggio#map('n', '', 0, 'fj', 'colorscheme <C-d>')
+    " Page up and page down mappings
+    :call arpeggio#map('n', '', 0, 'sd', '<C-f>')
+    :call arpeggio#map('v', '', 0, 'sd', '<C-f>')
+    :call arpeggio#map('n', '', 0, 'we', '<C-b>')
+    :call arpeggio#map('v', '', 0, 'we', '<C-b>')
 
-" List all open buffers
-call arpeggio#map('n', '', 0, 'af', ':buffers<CR>')
+    " Mappings for : to take the load of the pinky
+    :call arpeggio#map('n', '', 0, 'ef', ':')
+    :call arpeggio#map('v', '', 0, 'ef', ':')
 
-" buffer navigation mappings
-call arpeggio#map('n', '', 0, 'xc', ':bp<CR>')
-call arpeggio#map('n', '', 0, '.,', ':bn<CR>')
+    " testing feature
+    :call arpeggio#map('n', '', 0, 'fj', 'colorscheme <C-d>')
 
-" visual mode selecting mappings
-call arpeggio#map('n', '', 0, 'wf', '<C-v>')
-call arpeggio#map('n', '', 0, 'jo', '<S-v>')
+    " buffer navigation mappings
+    :call arpeggio#map('n', '', 0, 'xc', ':bp<CR>')
+    :call arpeggio#map('n', '', 0, '.,', ':bn<CR>')
 
-" toggle fold
-call arpeggio#map('n', '', 0, 'io', 'za' )
+    " visual mode selecting mappings
+    :call arpeggio#map('n', '', 0, 'wf', '<C-v>')
+    :call arpeggio#map('n', '', 0, 'jo', '<S-v>')
+
+    " toggle fold
+    :call arpeggio#map('n', '', 0, 'oi', 'za' )
+endfunction
+call Mapall()
 
 "**************************************************
 "*
@@ -168,12 +199,11 @@ map ` <C-w>
 "* Function key mappings
 "*
 "**************************************************
-" open quickfix list
-map <F1> :copen<CR>
+" Open quickfix list
+map  <F1> :copen<CR>
 
 " Copy all text in the current buffer
-" map <F2> :e ++ff=dos<CR>:w<CR>:e ++ff=unix<CR>:set list<CR>gg"*yG:%s/<C-v><C-m>//g<CR>:set nolist<CR>:w<CR>
-map <F2> :e ++ff=dos<CR>:w<CR>:set list<CR>gg"*yG:set nolist<CR>:w<CR>
+map <F2> gg"*yG
 
 " Paste and replace text to the current buffer
 map <F3> gg<S-v>Gx"*pgg
@@ -186,7 +216,7 @@ map <F5> :set nohlsearch<CR>
 map <F6> :bd<CR>
 
 " Open scratch
-map <F7> :e C:/Users/eco/Documents/scr<CR>
+map <F7> :e C:/Users/Eric/Documents/scr<CR>
 
 "Open nerdtree
 map <F9> :NERDTreeToggle<CR>
@@ -212,22 +242,25 @@ map ã "*y
 map ö "*p
 cmap ö <C-r>*
 
-" Scroll 8 lines at a time <A-j>, <A-k>
-map ê 25jzz " <A-j>
-map ë 25kzz " <A-k>
+" Scroll 8 lines at a time
+map ê 22jzz " <A-j>
+map ë 22kzz " <A-k>
 
-" execute macros <A-q>, <A-w>
-map ñ @a " <A-q>
-map ÷ @b " <A-w>
+" execute macros
+map ñ @q " <A-q>
+map ÷ @w " <A-w>
+map å @e " <A-e>
+map ò @r " <A-r>
+map ô @t " <A-t>
 
-" shift a line one indent left or right <A-<> <A->>
+" shift a line one indent left or right
 map ¬ <S-v>< " <A-<>
 map ® <S-v>> " <A->>
 
-" search highlighted <A-e>
-map å <A-c>/<A-v><CR>
+" search highlighted <A-a>
+map á <A-c>/<A-v><CR>
 
-" recursive search in this folder
+" recursive search in this folder <A-d>
 map ä :vimgrep //gj ./**/* <Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 
 " display all marks <A-f>
@@ -235,3 +268,13 @@ map æ :marks<CR>
 
 " map easymotion to use a single leader
 map <Leader> <Plug>(easymotion-prefix)
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" mapping to disable and enable arpeggio mappings
+map <Leader><F4> :call Mapall()<CR>
+map <Leader><F5> :silent! call Unmapall()<CR>
