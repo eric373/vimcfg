@@ -10,11 +10,20 @@ call pathogen#infect()
 "*
 "**************************************************
 " set where to save views
-set viewdir=C:\Users\Eric\vimfiles\view
+"set viewdir=$HOME
+set viewdir=D:\src\vimcfg\view
 
 " autosave and autoload all views
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
+
+"**************************************************
+"*
+"* Backup
+"*
+"**************************************************
+set nobackup
+set nowritebackup
 
 "**************************************************
 "*
@@ -100,12 +109,21 @@ set readonly!       " open all files as writable
 set wildignore=*.dll,*.o,*.exe " ignore these files when searching or auto-completing
 set noautochdir     " don't automatically change to directory of current file
 
+"**************************************************
+"*
+"* Macro replay
+"*
+"**************************************************
+set lazyredraw      " disable redrawing until macros complete
+
 " various commands for quick NERDTree navigation
 command! Src NERDTree D:\src
 command! Dropbox NERDTree D:\Dropbox\
 command! Accounts e D:\Dropbox\notes\accounts.txt
-command! Recipes e D:\Dropbox\notes\recipes.txt
-command! Docs NEDTRee C:\Users\Eric\Documents
+command! Recipes e D:\Dropbox\notes\recipesDishes.txt
+command! Docs NERDTRee C:\Users\Eric\Documents
+command! Ds e C:\Users\Eric\Desktop\games\dont_starve_todo.txt
+command! Wow e D:\Dropbox\gaming\wow things\ to\ do.txt
 
 "**************************************************
 "*
@@ -193,6 +211,12 @@ call Mapall()
 "*
 "**************************************************
 map ` <C-w>
+
+" go to next tab
+map <C-Tab> gt
+
+" go to previous tab
+map <C-S-Tab> gT
 
 "**************************************************
 "*
